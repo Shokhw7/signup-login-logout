@@ -25,8 +25,8 @@ export const useRegister = () =>{
             dispatch(login(req.user))
             console.log(req.user)
         } catch (error) {
-            setError(getFirebaseErrorMessage(error.code || error.message))
-            console.log(error.code, error.message)
+            setError(getFirebaseErrorMessage(error.message))
+            console.log(error.message)
         }finally{
             setIsPending(false)
         }
