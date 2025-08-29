@@ -1,6 +1,6 @@
 import { Link, Form, useActionData } from "react-router-dom";
 import FormInput from "../components/FormInput";
-import "../app.css";
+import "../App.css";
 import { useEffect, useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 
