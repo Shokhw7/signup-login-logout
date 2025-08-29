@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { useLogOut } from "../hooks/useLogOut"
+import useLogOut from "../hooks/useLogOut";
 
 function Home() {
   const {_logout, error, isPending} = useLogOut()
