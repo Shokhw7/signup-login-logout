@@ -1,6 +1,6 @@
 import { Form, Link, useActionData } from "react-router-dom";
 import FormInput from "../components/FormInput";
-import "../app.css";
+import "../App.css";
 import { useEffect, useState } from "react";
 import { useRegister } from "../hooks/useRegister";
 import { formError } from "../components/ErrorId";
