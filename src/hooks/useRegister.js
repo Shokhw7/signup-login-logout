@@ -4,7 +4,8 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { useDispatch } from "react-redux"
 import { login } from "../app/features/userSlice"
 import { getFirebaseErrorMessage } from "../components/ErrorId"
-
+import { db } from "../firebase/config"
+import { doc, setDoc } from "firebase/firestore"
 
 export const useRegister = () =>{
     const dispatch = useDispatch()
@@ -21,7 +22,16 @@ export const useRegister = () =>{
             }
             await updateProfile(req.user, {
                 displayName: name,
+                photoURL: "https://api.dicebear.com/9.x/initials/svg?seed=" + name,
             })
+
+            await setDoc(doc(db, "users", req.user.uid), {
+                displayName: req.user.displayName,
+                photoURL: req.user.photoURL,
+                online: true,
+                uid: req.user.uid,
+            })
+
             dispatch(login(req.user))
             console.log(req.user)
         } catch (error) {

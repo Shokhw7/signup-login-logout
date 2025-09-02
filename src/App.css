@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f4f6f9;
+  background: #ffffff;
 }
 
 .card {
@@ -38,19 +38,19 @@ h1 {
 .form input {
   width: 100%;
   padding: 0.6rem 0.8rem;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border-radius: 8px;
   outline: none;
   font-size: 1rem;
   transition: 0.2s;
 }
 .form input:focus {
-  border-color: #4a90e2;
+  border-color: rgb(47, 47, 255);
   box-shadow: 0 0 4px rgba(74, 144, 226, 0.3);
 }
 
 .btn {
-  background: #4a90e2;
+  background: rgb(33, 33, 255);
   color: #fff;
   font-weight: 600;
   padding: 0.7rem;
@@ -60,7 +60,7 @@ h1 {
   transition: 0.25s;
 }
 .btn:hover {
-  background: #357abd;
+  background: rgb(36, 36, 255);
 }
 
 .text {
@@ -68,10 +68,144 @@ h1 {
   color: #666;
 }
 .text a {
-  color: #4a90e2;
+  color: rgb(41, 41, 255);
   text-decoration: none;
   font-weight: 500;
 }
 .text a:hover {
   text-decoration: underline;
+}
+
+.home-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6fa;
+  position: relative;
+}
+
+.sidebar {
+  width: 250px;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-card .avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+.profile-card .username {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.logout-btn {
+  padding: 10px;
+  background: red;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: red;
+}
+
+.toggle-users-btn {
+  padding: 10px;
+  background: rgb(29, 29, 255);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.toggle-users-btn:hover {
+  background: rgb(48, 48, 255);
+}
+.orta {
+  flex: 1;
+  padding: 30px;
+}
+
+.users-sidebar {
+  position: fixed;
+  top: 0;
+  right: -320px; 
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -3px 0 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  overflow-y: auto;
+  transition: right 0.3s ease;
+}
+
+.users-sidebar.open {
+  right: 0; 
+}
+
+.list-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f9f9f9;
+  padding: 8px 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: 0.2s;
+}
+
+.user-card:hover {
+  background: #eef3ff;
+}
+
+.user-card .avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.user-card .username {
+  flex: 1;
+  font-size: 15px;
+  color: #333;
+}
+
+.status {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.online {
+  background: greenyellow;
+}
+.offline {
+  background: red;
 }

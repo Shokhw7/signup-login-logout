@@ -3,6 +3,7 @@ import FormInput from "../components/FormInput";
 import "../app.css";
 import { useEffect, useState } from "react";
 import { useRegister } from "../hooks/useRegister";
+import { formError } from "../components/ErrorId";
 
 export async function action({ request }) {
   const formData = await request.formData();
@@ -20,8 +21,8 @@ function Register() {
     if (user?.name && user?.email && user?.password) {
       register(user.name, user.email, user.password);
       setError(null);
-    } else if (user) {
-      setError("Iltimos, barcha maydonlarni to‘ldiring!");
+    }else{
+        setError(user ? formError(user) : false)
     }
   }, [user]);
 

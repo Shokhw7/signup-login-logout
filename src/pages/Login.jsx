@@ -3,6 +3,8 @@ import FormInput from "../components/FormInput";
 import "../App.css";
 import { useEffect, useState } from "react";
 import { useLogin } from "../hooks/useLogin";
+import { formError } from "../components/ErrorId";
+import { useResetPassword } from "../hooks/useResetPassword";
 
 export async function action({ request }) {
   const formData = await request.formData();
@@ -11,16 +13,22 @@ export async function action({ request }) {
 }
 
 function Login() {
-  const user = useActionData(); // <-- user deb nomladik
+  const user = useActionData();
   const [error, setError] = useState(null);
-  const { login } = useLogin();
-
+  const { _login, isPending, error: _error } = useLogin();
+  const {resetPassword} = useResetPassword()
+  const [forgetPassword, setForgetPassword] = useState(false)
+    
   useEffect(() => {
     if (user?.email && user?.password) {
-      login(user.email, user.password); // faqat email va parol
-      setError(null);
-    } else if (user) {
-      setError("Iltimos, barcha maydonlarni to‘ldiring!");
+      _login(user.email, user.password);
+      setError(false);
+    } else {
+      setError(user ? formError(user) : false);
+    }
+    if(user?.emailRecovery){
+      resetPassword(user.emailRecovery)
+      setError(false);
     }
   }, [user]);
 
@@ -29,17 +37,32 @@ function Login() {
       <div className="card">
         <h1>Login</h1>
 
-        <Form className="form" method="post">
+        {!forgetPassword && (<Form className="form" method="post">
           <FormInput label="Email:" name="email" type="email" />
           <FormInput label="Password" name="password" type="password" />
           <div>
-            <button type="submit" className="btn">
-              Login
-            </button>
+            {!isPending && (
+              <button type="submit" className="btn">
+                Login
+              </button>
+            )}
+            {isPending && (
+              <button type="submit" className="btn" disabled>
+                Loading...
+              </button>
+            )}
           </div>
-        </Form>
+        </Form>)}
 
+        {forgetPassword && (<Form className="form" method="post">
+          <FormInput label="Email:" name="emailRecovery"/>
+          <button className="btn">Send</button>
+           
+        </Form>)}
+          {!forgetPassword && (<button onClick={()=> setForgetPassword(!forgetPassword)}  className="btn">Forget Password</button>)}
+          {forgetPassword && (<button onClick={()=> setForgetPassword(!forgetPassword)} className="btn">Show login</button>)}
         {error && <p style={{ color: "red" }}>{error}</p>}
+        {_error && <p style={{ color: "red" }}>{_error}</p>}
 
         <p className="text">
           If you don't have account, please <Link to="/register">Register</Link>
