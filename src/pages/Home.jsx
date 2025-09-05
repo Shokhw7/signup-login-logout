@@ -1,11 +1,12 @@
 import { useSelector } from "react-redux";
-import { useLogOut } from "../hooks/useLogOut";
+import { useLogout } from "../hooks/useLogout";
+
 import { useCollection } from "../hooks/useCollection";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Home() {
-  const { _logout, error, isPending } = useLogOut();
+  const { _logout, error, isPending } = useLogout();
   const { user } = useSelector((store) => store.user);
   const { data: users } = useCollection("users");
   const { data: tasks } = useCollection("tasks");
