@@ -6,7 +6,7 @@ import { logout } from "../app/features/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { doc, updateDoc } from "firebase/firestore";
 
-export function useLogOut() {
+export function useLogout() {
   const dispatch = useDispatch();
   const [isPending, setIsPending] = useState();
   const [error, setError] = useState();
