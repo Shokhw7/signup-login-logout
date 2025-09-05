@@ -41,11 +41,11 @@ function Task() {
       <h1 className="text-xl font-bold">Task - {data.title}</h1>
 
       <div className="space-y-2">
-        {data.comments.length === 0 ? (
+        {!data.comments || data.comments.length === 0 ? (
           <p>No Comments</p>
         ) : (
           <div className="space-y-4">
-            {data.comments.map((comment) => {
+            {data.comments?.map((comment) => {
               const isCurrentUser = comment.uid === user.uid;
               return (
                 <div
