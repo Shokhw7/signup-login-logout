@@ -15,6 +15,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/config";
 import { useEffect } from "react";
 import { isAuthReady, login } from "./app/features/userSlice";
+import CreateTask from "./pages/CreateTask";
+import Task from "./pages/Task";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +34,14 @@ function App() {
           index: true,
           element: <Home />,
         },
+        {
+          path: "/create",
+          element: <CreateTask />,
+        },
+        {
+          path: "/task/:id",
+          element: <Task />,
+        },
       ],
     },
     {
@@ -47,15 +57,13 @@ function App() {
   ]);
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if(user?.displayName){
+      if (user?.displayName) {
         dispatch(login(user));
       }
-      dispatch(isAuthReady())
+      dispatch(isAuthReady());
     });
   }, []);
-  return <>
-    {authReady && <RouterProvider router={routes} />}
-  </>;
+  return <>{authReady && <RouterProvider router={routes} />}</>;
 }
 
 export default App;

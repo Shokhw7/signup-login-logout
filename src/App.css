@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
 .container {
   min-height: 100vh;
   display: flex;
@@ -194,7 +197,7 @@ h1 {
 .user-card .username {
   flex: 1;
   font-size: 15px;
-  color: #333;
+  color: #Ffff;
 }
 
 .status {
