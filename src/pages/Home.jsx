@@ -9,9 +9,9 @@ function Home() {
   const { _logout, error, isPending } = useLogout();
   const { user } = useSelector((store) => store.user);
   const { data: users } = useCollection("users");
-  const { data: tasks } = useCollection("tasks");
+  const { data: tasks } = useCollection("tasks", "asc");
 
-  const [showUsers, setShowUsers] = useState(false);
+  const [showUsers, setShowUsers] = useState(true);
 
   return (
     <div className="flex h-screen bg-base-200 text-base-content">

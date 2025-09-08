@@ -44,15 +44,16 @@ function Task() {
         {!data.comments || data.comments.length === 0 ? (
           <p>No Comments</p>
         ) : (
-          <div className="space-y-4">
+          <div className="flex flex-col h-[80vh]">
+          <div className="flex-1 overflow-y-auto space-y-4">
             {data.comments?.map((comment) => {
               const isCurrentUser = comment.uid === user.uid;
               return (
                 <div
-                  key={comment.id}
-                  className={`chat ${
-                    isCurrentUser ? "chat-end" : "chat-start"
-                  }`}
+                key={comment.id}
+                className={`chat ${
+                  isCurrentUser ? "chat-end" : "chat-start"
+                }`}
                 >
                   <div className="chat-image avatar">
                     <div className="w-10 rounded-full">
@@ -69,11 +70,12 @@ function Task() {
                 </div>
               );
             })}
+            </div>
           </div>
         )}
       </div>
 
-      <form onSubmit={handleSubmit} className="flex gap-2">
+      <form onSubmit={handleSubmit} className="flex gap-2 mt-2">
         <input
           type="text"
           placeholder="Add comment"

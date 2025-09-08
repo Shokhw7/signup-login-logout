@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useCollection } from "../hooks/useCollection";
 import Select from "react-select";
 import { useEffect, useState } from "react";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp,} from "firebase/firestore";
 import { db } from "../firebase/config";
 
 function CreateTask() {
@@ -36,6 +36,7 @@ function CreateTask() {
       attachedUsers,
       dueTo,
       comments: [],
+      timestamp: serverTimestamp(),
     };
 
     await addDoc(collection(db, "tasks"), task).then(() => {
@@ -45,8 +46,8 @@ function CreateTask() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-base-200 text-black">
-      <div className="card w-full max-w-lg bg-base-100 shadow-xl p-6">
+    <div className="flex justify-center items-center min-h-screen text-black">
+      <div className="cardd w-full max-w-lg bg-base-100 shadow-xl p-6">
         <h2 className="text-2xl font-bold mb-4 text-center">➕ Create Task</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">

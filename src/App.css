@@ -212,3 +212,9 @@ h1 {
 .offline {
   background: red;
 }
+
+.cardd{
+  background-color: #ffffff;
+  border-radius: 12px;
+  width: 420px;
+}

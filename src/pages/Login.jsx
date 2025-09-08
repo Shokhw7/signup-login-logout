@@ -65,7 +65,7 @@ function Login() {
         {_error && <p style={{ color: "red" }}>{_error}</p>}
 
         <p className="text">
-          If you don't have account, please <Link to="/register">Register</Link>
+          Don't have an account? <Link to="/register">Register</Link>
         </p>
       </div>
     </div>
