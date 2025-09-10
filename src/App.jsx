@@ -18,7 +18,7 @@ import { isAuthReady, login } from "./app/features/userSlice";
 import CreateTask from "./pages/CreateTask";
 import Task from "./pages/Task";
 import Profile from "./pages/Profile";
-import UserInfo from "./pages/userInfo";
+import UserInfo from "./pages/UserInfo";
 
 function App() {
   const dispatch = useDispatch();
