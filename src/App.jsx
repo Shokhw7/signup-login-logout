@@ -17,6 +17,8 @@ import { useEffect } from "react";
 import { isAuthReady, login } from "./app/features/userSlice";
 import CreateTask from "./pages/CreateTask";
 import Task from "./pages/Task";
+import Profile from "./pages/Profile";
+import UserInfo from "./pages/userInfo";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,8 +37,16 @@ function App() {
           element: <Home />,
         },
         {
+          path: "/profile",
+          element: <Profile />,
+        },
+        {
           path: "/create",
           element: <CreateTask />,
+        },
+        {
+          path: "/userInfo/:id",
+          element: <UserInfo />,
         },
         {
           path: "/task/:id",

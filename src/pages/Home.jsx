@@ -25,6 +25,10 @@ function Home() {
           <h2 className="font-bold">{user.displayName}</h2>
         </div>
 
+        <Link to="/profile" className="btn btn-primary w-full mb-2">
+          Profile
+        </Link>
+
         <Link to="/create" className="btn btn-primary w-full mb-2">
           + New Task
         </Link>
@@ -56,7 +60,7 @@ function Home() {
                 key={task.id || task.uid}
                 className="border rounded-lg p-4 bg-base-100 hover:shadow-md transition"
               >
-                <Link to={`/task/${task.id || task.uid}`}>
+                <Link to={`/userInfo/${task.uid}`}>
                   <h5 className="font-semibold text-lg">{task.title}</h5>
                   <div className="flex items-center gap-1 mt-2">
                     {task.attachedUsers?.map((u, index) => (
@@ -80,9 +84,10 @@ function Home() {
           <div className="space-y-3">
             {users &&
               users.map((u) => (
-                <div
+                <Link
+                  to={`/userInfo/${u.uid}`}
                   key={u.uid}
-                  className="flex items-center gap-3 border-b pb-2"
+                  className="flex items-center gap-3 border-b pb-2 cursor-pointer hover:bg-base-200 p-2 rounded"
                 >
                   <img
                     className="w-8 h-8 rounded-full"
@@ -95,7 +100,7 @@ function Home() {
                       u.online ? "bg-green-500" : "bg-gray-400"
                     }`}
                   />
-                </div>
+                </Link>
               ))}
           </div>
         </div>
